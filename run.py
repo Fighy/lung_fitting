@@ -2,7 +2,7 @@ import sys
 import os
 import fileinput
 from shutil import copyfile
-from PySide import QtGui
+from PySide2 import QtGui
 from src.view import View
 from src.scene import Scene
 from src.model import *

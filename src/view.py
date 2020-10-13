@@ -1,6 +1,8 @@
 from PySide2 import QtGui, QtCore,QtWidgets
+
 from .ui_view import Ui_View
 import os
+
 
 class View(QtWidgets.QWidget):
     def __init__(self, scene, parent=None):
@@ -63,9 +65,12 @@ class View(QtWidgets.QWidget):
         self._originalSceneviewerMousePressEvent = self._ui.sceneviewer_widget.mousePressEvent
         self._ui.sceneviewer_widget.mousePressEvent = self._sceneviewerMousePressEvent
 
-        self._landmarksGroup = QtGui.QButtonGroup(self)
+        #self._landmarksGroup = QtGui.QButtonGroup(self)
+        self._landmarksGroup = QtWidgets.QButtonGroup(self)
+
         for landmark_pushButton in self._ui.landmarks_groupBox.children():
-            if type(landmark_pushButton) == QtGui.QPushButton:
+            #if type(landmark_pushButton) == QtGui.QPushButton:
+            if type(landmark_pushButton) == QtWidgets.QPushButton:
                 self._landmarksGroup.addButton(landmark_pushButton)
                 landmark_pushButton.pressed.connect(self._landmarkButtonPressed)
                 landmark_pushButton.released.connect(self._landmarkButtonReleased)

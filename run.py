@@ -7,6 +7,7 @@ from src.view import View
 from src.scene import Scene
 from src.model import *
 
+
 from aether.diagnostics import set_diagnostics_on
 from aether.geometry import define_elem_geometry_2d, define_node_geometry_2d,define_data_geometry, define_rad_from_file, define_rad_from_geom, append_units
 from aether.exports import export_node_geometry_2d, export_elem_geometry_2d,export_data_geometry

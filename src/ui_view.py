@@ -284,9 +284,9 @@ class Ui_View(object):
         """
 
 
-        #self.surfaceIpelem_pushButton.setText(QtWidgets.QApplication.translate("View", ".ipelem", None))
         self.showDatacloud_checkBox.setText(QtWidgets.QApplication.translate("View", "Show data cloud", None))
         self.showMesh_checkBox.setText(QtWidgets.QApplication.translate("View", "Show surface mesh", None))
+        self.showNode_checkBox.setText(QtWidgets.QApplication.translate("View", "Show sphere node", None))
         self.load_pushButton.setText(QtWidgets.QApplication.translate("View", "Load", None))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("View", "Fitting", None))
         self.fit_pushButton.setText(QtWidgets.QApplication.translate("View", "Fit", None))

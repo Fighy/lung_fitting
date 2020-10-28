@@ -69,10 +69,10 @@ def load(ipdata, ipnode, ipelem):
         surfaceModel.visualizeLines('lines', 'gold')
         surfaceModel.visualizeSurfaces('lines', 'transBlue')
 
-def show(datacloud, mesh):
+def show(datacloud, mesh, spherenode):
     datacloudModel.setVisibility(datacloud)
     surfaceModel.setVisibility(mesh)
-    #spherenodeModel.setVisibility(spherenode)
+    spherenodeModel.setVisibility(spherenode)
 
 def landmark(widget, landmark, x, y):
     selectTol = 5  # number of pixels around clicked area that are probed for datacloud points

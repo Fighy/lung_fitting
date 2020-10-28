@@ -122,8 +122,8 @@ class View(QtWidgets.QWidget):
         if self._showCallback:
             datacloud = self._ui.showDatacloud_checkBox.isChecked()
             mesh = self._ui.showMesh_checkBox.isChecked()
-            node = self._ui.showNode_checkBox.isChecked()
-            self._showCallback(datacloud, mesh, node)
+            spherenode = self._ui.showNode_checkBox.isChecked()
+            self._showCallback(datacloud, mesh, spherenode)
     
     def _landmarkButtonPressed(self):
         button = self.sender()

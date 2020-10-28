@@ -58,6 +58,7 @@ class View(QtWidgets.QWidget):
         self._ui.save_pushButton.clicked.connect(self._saveClicked)
         self._ui.showDatacloud_checkBox.clicked.connect(self._showClicked)
         self._ui.showMesh_checkBox.clicked.connect(self._showClicked)
+        self._ui.showNode_checkBox.clicked.connect(self._showClicked)
 
         self._ui.info_pushButton.clicked.connect(self._infoClicked)
         self._ui.info_pushButton.setIcon(QtGui.QIcon.fromTheme('dialog-information'))
@@ -121,7 +122,8 @@ class View(QtWidgets.QWidget):
         if self._showCallback:
             datacloud = self._ui.showDatacloud_checkBox.isChecked()
             mesh = self._ui.showMesh_checkBox.isChecked()
-            self._showCallback(datacloud, mesh)
+            node = self._ui.showNode_checkBox.isChecked()
+            self._showCallback(datacloud, mesh, node)
     
     def _landmarkButtonPressed(self):
         button = self.sender()

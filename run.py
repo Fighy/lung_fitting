@@ -20,7 +20,7 @@ scene = Scene()
 
 datacloudModel = FileModel(scene, 'datacloud')
 surfaceModel = FileModel(scene, 'surface')
-#spherenodeModel = FileModel(scene, 'spherenode')
+spherenodeModel = FileModel(scene, 'spherenode')
 
 # the keys in these dicts correspond to the accessibleName in Qt
 landmarkCoords = {}

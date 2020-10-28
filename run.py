@@ -20,6 +20,7 @@ scene = Scene()
 
 datacloudModel = FileModel(scene, 'datacloud')
 surfaceModel = FileModel(scene, 'surface')
+#spherenodeModel = FileModel(scene, 'spherenode')
 
 # the keys in these dicts correspond to the accessibleName in Qt
 landmarkCoords = {}
@@ -71,6 +72,7 @@ def load(ipdata, ipnode, ipelem):
 def show(datacloud, mesh):
     datacloudModel.setVisibility(datacloud)
     surfaceModel.setVisibility(mesh)
+    #spherenodeModel.setVisibility(spherenode)
 
 def landmark(widget, landmark, x, y):
     selectTol = 5  # number of pixels around clicked area that are probed for datacloud points

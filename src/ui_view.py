@@ -76,7 +76,7 @@ class Ui_View(object):
         self.showMesh_checkBox.setChecked(True)
         self.showMesh_checkBox.setObjectName("showMesh_checkBox")
         self.gridLayout_4.addWidget(self.showMesh_checkBox, 5, 0, 1, 2)
-        self.showNode_checkBox = Qtwidgets.QCheckbox(self.leftLung_groupBox)
+        self.showNode_checkBox = QtWidgets.QCheckbox(self.leftLung_groupBox)
         self.showNode_checkBox.setChecked(True)
         self.showNode_checkBox.setObjectName("showNode_checkBox")
         self.gridLayout_4.addWidget(self.showNode_checkBox, 6, 0, 1, 2)

@@ -42,7 +42,7 @@ def load(ipdata, ipnode, ipelem):
             pass
 
         define_data_geometry(data)
-        export_data_geometry(data, 'fitted')
+        export_data_geometry(data, 'fitted', 0)
 
         datacloudModel.load(data + '.exdata')
         datacloudModel.visualizePoints('nodes', 'white', 0)
@@ -108,7 +108,7 @@ def fit(ipdata, ipnode, ipelem, iterations):
         coords = landmarkCoords[landmark]
         print('Fitting with landmark %s = %s' % (landmark, coords))
 
-    mapname = 'example/LUL_map'
+    mapname = 'example/Left_fix_outer'
 
     elem = os.path.splitext(ipelem)[0]
     data = os.path.splitext(ipdata)[0]

@@ -14,7 +14,7 @@ from aether.exports import export_node_geometry_2d, export_elem_geometry_2d,expo
 from aether.surface_fitting import fit_surface_geometry
 from opencmiss.zinc.scenecoordinatesystem import SCENECOORDINATESYSTEM_WINDOW_PIXEL_TOP_LEFT
 
-#app = QtGui.QApplication(sys.argv)
+
 app = QtWidgets.QApplication(sys.argv)
 scene = Scene()
 
@@ -68,6 +68,7 @@ def load(ipdata, ipnode, ipelem):
         surfaceModel.load(node + '.exnode', elem + '.exelem')
         surfaceModel.visualizeLines('lines', 'gold')
         surfaceModel.visualizeSurfaces('lines', 'transBlue')
+        spherenodeModel.getNodeCoordinates('nodes', 'green')
 
 def show(datacloud, mesh, spherenode):
     datacloudModel.setVisibility(datacloud)

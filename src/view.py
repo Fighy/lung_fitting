@@ -15,6 +15,7 @@ class View(QtWidgets.QWidget):
         self._showCallback = None
         self._landmarkCallback = None
         self._fitCallback = None
+        self._scaleCallback = None
         self._saveCallback = None
 
         self._ui = Ui_View()
@@ -42,6 +43,9 @@ class View(QtWidgets.QWidget):
 
     def fitCallback(self, cb):
         self._fitCallback = cb
+        
+    def scaleCallback(self, cb):
+        self._scaleCallback = cb   
 
     def saveCallback(self, cb):
         self._saveCallback = cb
@@ -55,6 +59,7 @@ class View(QtWidgets.QWidget):
         self._ui.outputExnode_pushButton.clicked.connect(self._outputExnodeClicked)
         self._ui.outputExelem_pushButton.clicked.connect(self._outputExelemClicked)
         self._ui.fit_pushButton.clicked.connect(self._fitClicked)
+        self._ui.scale_pushButton.clicked.connect(self._scaleClicked)
         self._ui.save_pushButton.clicked.connect(self._saveClicked)
         self._ui.showDatacloud_checkBox.clicked.connect(self._showClicked)
         self._ui.showMesh_checkBox.clicked.connect(self._showClicked)
@@ -168,6 +173,17 @@ class View(QtWidgets.QWidget):
             #QtGui.QApplication.restoreOverrideCursor()
             QtWidgets.QApplication.restoreOverrideCursor()
 
+            
+    def _scaleClicked(self):
+        if self._scaleCallback:
+            #QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
+            QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
+            iterations = self._ui.iterations_spinBox.value()
+            self._scaleCallback(self._inputFilenames[0], self._inputFilenames[3], iterations)
+            #QtGui.QApplication.restoreOverrideCursor()
+            QtWidgets.QApplication.restoreOverrideCursor()
+            
+            
     def _saveClicked(self):
         if self._saveCallback:
             #QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)

@@ -160,6 +160,19 @@
            </property>
           </widget>
          </item>
+         <item row="5" column="0" colspan="2">
+          <widget class="QPushButton" name="scale_pushButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Scale</string>
+           </property>
+          </widget>
+         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label">
            <property name="text">

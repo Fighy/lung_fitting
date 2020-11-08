@@ -29,7 +29,6 @@ class View(QtWidgets.QWidget):
         self._info = info
     
     def _infoClicked(self):
-        #QtGui.QMessageBox.information(self, 'Information', self._info)
         QtWidgets.QMessageBox.information(self, 'Information', self._info)
 
     def loadCallback(self, cb):
@@ -72,11 +71,9 @@ class View(QtWidgets.QWidget):
         self._originalSceneviewerMousePressEvent = self._ui.sceneviewer_widget.mousePressEvent
         self._ui.sceneviewer_widget.mousePressEvent = self._sceneviewerMousePressEvent
 
-        #self._landmarksGroup = QtGui.QButtonGroup(self)
         self._landmarksGroup = QtWidgets.QButtonGroup(self)
 
         for landmark_pushButton in self._ui.landmarks_groupBox.children():
-            #if type(landmark_pushButton) == QtGui.QPushButton:
             if type(landmark_pushButton) == QtWidgets.QPushButton:
                 self._landmarksGroup.addButton(landmark_pushButton)
                 landmark_pushButton.pressed.connect(self._landmarkButtonPressed)
@@ -91,7 +88,6 @@ class View(QtWidgets.QWidget):
             sceneviewer.viewAll()
 
     def _datacloudIpdataClicked(self):
-        #filename, _ = QtGui.QFileDialog.getOpenFileName(parent=self, caption='Open data cloud ipdata file', dir=self._path, filter='*.ipdata')
         filename, _ = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open data cloud ipdata file', dir=self._path, filter='*.ipdata')
         if filename:
             self._ui.datacloudIpdata_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
@@ -99,7 +95,6 @@ class View(QtWidgets.QWidget):
             self._path = os.path.dirname(filename)
 
     def _surfaceIpnodeClicked(self):
-        #filename, _ = QtGui.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipnode file', dir=self._path, filter='*.ipnode')
         filename, _ = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipnode file', dir=self._path, filter='*.ipnode')
         if filename:
             self._ui.surfaceIpnode_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
@@ -107,7 +102,6 @@ class View(QtWidgets.QWidget):
             self._path = os.path.dirname(filename)
 
     def _surfaceIpelemClicked(self):
-        #filename, _ = QtGui.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipelem file', dir=self._path, filter='*.ipelem')
         filename, _ = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipelem file', dir=self._path, filter='*.ipelem')
         if filename:
             self._ui.surfaceIpelem_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
@@ -116,11 +110,9 @@ class View(QtWidgets.QWidget):
 
     def _loadClicked(self):
         if self._loadCallback:
-           #QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             self._loadCallback(self._inputFilenames[0], self._inputFilenames[1], self._inputFilenames[2])
             self._graphicsUpdate()
-            #QtGui.QApplication.restoreOverrideCursor()
             QtWidgets.QApplication.restoreOverrideCursor()
     
     def _showClicked(self):
@@ -149,7 +141,6 @@ class View(QtWidgets.QWidget):
         self._outputFilenames[1] = str(exelem)
     
     def _outputExnodeClicked(self):
-        #filename, _ = QtGui.QFileDialog.getSaveFileName(parent=self, caption='Save output exnode file', dir=self._path, filter='*.exnode')
         filename, _ = QtWidgets.QFileDialog.getSaveFileName(parent=self, caption='Save output exnode file', dir=self._path, filter='*.exnode')
         if filename:
             self._ui.outputExnode_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
@@ -157,7 +148,6 @@ class View(QtWidgets.QWidget):
             self._path = os.path.dirname(filename)
 
     def _outputExelemClicked(self):
-        #filename, _ = QtGui.QFileDialog.getSaveFileName(parent=self, caption='Save output exelem file', dir=self._path, filter='*.exelem')
         filename, _ = QtWidgets.QFileDialog.getSaveFileName(parent=self, caption='Save output exelem file', dir=self._path, filter='*.exelem')
         if filename:
             self._ui.outputExelem_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
@@ -166,30 +156,24 @@ class View(QtWidgets.QWidget):
 
     def _fitClicked(self):
         if self._fitCallback:
-            #QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             iterations = self._ui.iterations_spinBox.value()
             self._fitCallback(self._inputFilenames[0], self._inputFilenames[1], self._inputFilenames[2], iterations)
-            #QtGui.QApplication.restoreOverrideCursor()
             QtWidgets.QApplication.restoreOverrideCursor()
 
             
     def _scaleClicked(self):
         if self._scaleCallback:
-            #QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             iterations = self._ui.iterations_spinBox.value()
             self._scaleCallback(self._inputFilenames[0], self._inputFilenames[3], iterations)
-            #QtGui.QApplication.restoreOverrideCursor()
             QtWidgets.QApplication.restoreOverrideCursor()
             
             
     def _saveClicked(self):
         if self._saveCallback:
-            #QtGui.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
             self._saveCallback(self._outputFilenames[0], self._outputFilenames[1])
-            #QtGui.QApplication.restoreOverrideCursor()
             QtWidgets.QApplication.restoreOverrideCursor()
 
     def _sceneviewerMousePressEvent(self, event):

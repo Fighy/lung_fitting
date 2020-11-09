@@ -61,18 +61,18 @@ def load(ipdata, ipnode, ipelem, ipmap):
         except OSError:
             pass
         
-    if ipmap:
-        node = os.path.splitext(ipmap)[0]
-        elem = os.path.splitext(ipmap)[0]
-        try:
-            os.remove(node + '.ipmap')
-        except OSError:
-            pass
+        else ipmap:
+            node = os.path.splitext(ipmap)[0]
+            elem = os.path.splitext(ipmap)[0]
+            try:
+                os.remove(node + '.ipmap')
+            except OSError:
+                pass
         
-        try:
-            os.remove(elem + '.ipmap')
-        except OSError:
-            pass
+            try:
+                os.remove(elem + '.ipmap')
+            except OSError:
+                pass
         
         define_node_geometry_2d(ipnode, ipmap)
         define_elem_geometry_2d(elem, 'unit')

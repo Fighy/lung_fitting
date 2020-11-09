@@ -21,7 +21,6 @@ scene = Scene()
 datacloudModel = FileModel(scene, 'datacloud')
 surfaceModel = FileModel(scene, 'surface')
 spherenodeModel = FileModel(scene, 'spherenode')
-pcaModel = FileModel(scene, 'surface')
 
 # the keys in these dicts correspond to the accessibleName in Qt
 landmarkCoords = {}
@@ -61,42 +60,25 @@ def load(ipdata, ipnode, ipelem):
         except OSError:
             pass
         
-        else ipnode:
-            node = os.path.splitext(ipnode)[0]
-            elem = os.path.splitext(ipnode)[0]
-            try:
-                os.remove(node + '.ipnode')
-            except OSError:
-                pass
-        
-            try:
-                os.remove(elem + '.ipnode')
-            except OSError:
-                pass
         
         define_node_geometry_2d(ipnode)
         define_elem_geometry_2d(elem, 'unit')
         export_node_geometry_2d(node, 'fitted', 0)
         export_elem_geometry_2d(elem, 'fitted', 0, 0)
         
-        #define_node_geometry_2d(ipmap)
-        #define_elem_geometry_2d(elem, 'unit')
-        #export_node_geometry_2d(node, 'fitted', 0)
-        #export_elem_geometry_2d(elem, 'fitted', 0, 0)
 
         surfaceModel.load(node + '.exnode', elem + '.exelem')
         surfaceModel.visualizeLines('lines', 'gold')
         surfaceModel.visualizeSurfaces('lines', 'transBlue')
         spherenodeModel.getNodeCoordinates('nodes', 'green')
-        pcaModel.load(node + '.exnode', elem + '.exelem')
-        pcaModel.visualizeLines('lines', 'gold')
-        pcaModel.visualizeSurfaces('lines', 'transBlue')
+        #pcaModel.load(node + '.exnode', elem + '.exelem')
+        #pcaModel.visualizeLines('lines', 'gold')
+        #pcaModel.visualizeSurfaces('lines', 'transBlue')
         
 
 def show(datacloud, mesh, spherenode):
     datacloudModel.setVisibility(datacloud)
     surfaceModel.setVisibility(mesh)
-    pcaModel.setVisibility(mesh)
     spherenodeModel.setVisibility(spherenode)
 
 def landmark(widget, landmark, x, y):
@@ -159,7 +141,6 @@ def save(exnode, exelem):
 view = View(scene)
 view.loadCallback(load)
 view.showCallback(show)
-view.pcaCallback(load)
 view.landmarkCallback(landmark)
 view.fitCallback(fit)
 view.saveCallback(save)

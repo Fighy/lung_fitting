@@ -8,11 +8,13 @@ class View(QtWidgets.QWidget):
     def __init__(self, scene, parent=None):
         super(View, self).__init__(parent)
         self._inputFilenames = ['', '', '']
+        self._pcaFilenames = ['']
         self._outputFilenames = ['', '']
         self._path = '.'
         self._info = ''
         self._loadCallback = None
         self._showCallback = None
+        self._pcaCallback = None
         self._landmarkCallback = None
         self._fitCallback = None
         self._scaleCallback = None
@@ -36,6 +38,9 @@ class View(QtWidgets.QWidget):
 
     def showCallback(self, cb):
         self._showCallback = cb
+        
+    def pcaCallback(self, cb):
+        self._pcaCallback = cb
 
     def landmarkCallback(self, cb):
         self._landmarkCallback = cb
@@ -55,6 +60,8 @@ class View(QtWidgets.QWidget):
         self._ui.surfaceIpnode_pushButton.clicked.connect(self._surfaceIpnodeClicked)
         self._ui.surfaceIpelem_pushButton.clicked.connect(self._surfaceIpelemClicked)
         self._ui.load_pushButton.clicked.connect(self._loadClicked)
+        self._ui.surfaceIpmap_pushButton.clicked.connect(self._surfaceIpmapClicked)
+        self._ui.pcaSurface_pushButton.clicked.connect(self._pcaSurfaceClicked)
         self._ui.outputExnode_pushButton.clicked.connect(self._outputExnodeClicked)
         self._ui.outputExelem_pushButton.clicked.connect(self._outputExelemClicked)
         self._ui.fit_pushButton.clicked.connect(self._fitClicked)
@@ -121,6 +128,20 @@ class View(QtWidgets.QWidget):
             mesh = self._ui.showMesh_checkBox.isChecked()
             spherenode = self._ui.showNode_checkBox.isChecked()
             self._showCallback(datacloud, mesh, spherenode)
+            
+    def _surfaceIpmapClicked(self):
+        filename, _ = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipmap file', dir=self._path, filter='*.ipmap')
+        if filename:
+            self._ui.surfaceIpmap_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
+            self._pcaFilenames[3] = str(filename)
+            self._path = os.path.dirname(filename)
+            
+    def _pcaSurfaceClicked(self):
+        if self._pcaCallback:
+            QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
+            self._loadCallback(self._inputFilenames[0], self._pcaFilenames[3])
+            self._graphicsUpdate()
+            QtWidgets.QApplication.restoreOverrideCursor()
     
     def _landmarkButtonPressed(self):
         button = self.sender()

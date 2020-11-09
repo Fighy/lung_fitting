@@ -34,7 +34,7 @@ landmarkMaterials = {
 }
 
 # callback functions for actions: load, show, landmark, fit, save
-def load(ipdata, ipnode, ipelem, ipmap):
+def load(ipdata, ipnode, ipelem):
     if ipdata:
         data = os.path.splitext(ipdata)[0]
         try:
@@ -61,20 +61,20 @@ def load(ipdata, ipnode, ipelem, ipmap):
         except OSError:
             pass
         
-        else ipmap:
-            node = os.path.splitext(ipmap)[0]
-            elem = os.path.splitext(ipmap)[0]
+        else ipnode:
+            node = os.path.splitext(ipnode)[0]
+            elem = os.path.splitext(ipnode)[0]
             try:
-                os.remove(node + '.ipmap')
+                os.remove(node + '.ipnode')
             except OSError:
                 pass
         
             try:
-                os.remove(elem + '.ipmap')
+                os.remove(elem + '.ipnode')
             except OSError:
                 pass
         
-        define_node_geometry_2d(ipnode, ipmap)
+        define_node_geometry_2d(ipnode)
         define_elem_geometry_2d(elem, 'unit')
         export_node_geometry_2d(node, 'fitted', 0)
         export_elem_geometry_2d(elem, 'fitted', 0, 0)
@@ -124,8 +124,8 @@ def landmark(widget, landmark, x, y):
         return True
     return False
 
-def fit(ipdata, ipnode, ipelem, ipmap, iterations):
-    if not ipdata or not ipnode or not ipelem or not ipmap:
+def fit(ipdata, ipnode, ipelem, iterations):
+    if not ipdata or not ipnode or not ipelem:
         print('Error: data cloud or surface mesh not loaded')
         return
 

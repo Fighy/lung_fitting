@@ -131,11 +131,11 @@
       <item>
        <widget class="QGroupBox" name="groupBox_4">
         <property name="title">
-         <string>Surface input</string>
+         <string>PCA Ipmap Input</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="0" column="0">
-          <widget class="QLineEdit" name="surfaceIpnode_lineEdit">
+          <widget class="QLineEdit" name="surfaceIpmap_lineEdit">
            <property name="font">
             <font>
              <pointsize>8</pointsize>
@@ -144,30 +144,14 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QPushButton" name="surfaceIpnode_pushButton">
+          <widget class="QPushButton" name="surfaceIpmap_pushButton">
            <property name="text">
             <string>.ipnode</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QLineEdit" name="surfaceIpelem_lineEdit">
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="surfaceIpelem_pushButton">
-           <property name="text">
-            <string>.ipelem</string>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="0" colspan="2">
-          <widget class="QPushButton" name="loadSurface_pushButton">
+          <widget class="QPushButton" name="pcaSurface_pushButton">
            <property name="minimumSize">
             <size>
              <width>0</width>

@@ -135,7 +135,7 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="0" column="0">
-          <widget class="QLineEdit" name="surfaceIpmap_lineEdit">
+          <widget class="QLineEdit" name="pcaIpnode_lineEdit">
            <property name="font">
             <font>
              <pointsize>8</pointsize>
@@ -144,9 +144,9 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QPushButton" name="surfaceIpmap_pushButton">
+          <widget class="QPushButton" name="pcaIpnode_pushButton">
            <property name="text">
-            <string>.ipmap</string>
+            <string>.ipndoe</string>
            </property>
           </widget>
          </item>

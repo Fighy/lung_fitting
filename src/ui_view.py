@@ -243,7 +243,7 @@ class Ui_View(object):
         self.showNode_checkBox.setText(QtWidgets.QApplication.translate("View", "Show sphere node", None))
         self.load_pushButton.setText(QtWidgets.QApplication.translate("View", "Load", None))
         self.groupBox_4.setTitle(QtWidgets.QApplication.translate("View", "PCA Input", None))
-        self.pcaIpnode_pushButton.setText(QtWidgets.QApplication.translate("View", ".ipmap", None))
+        self.pcaIpnode_pushButton.setText(QtWidgets.QApplication.translate("View", ".ipnode", None))
         self.pcaSurface_pushButton.setText(QtWidgets.QApplication.translate("View", "Load", None))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("View", "Fitting", None))
         self.fit_pushButton.setText(QtWidgets.QApplication.translate("View", "Fit", None))

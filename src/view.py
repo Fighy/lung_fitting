@@ -60,7 +60,7 @@ class View(QtWidgets.QWidget):
         self._ui.surfaceIpnode_pushButton.clicked.connect(self._surfaceIpnodeClicked)
         self._ui.surfaceIpelem_pushButton.clicked.connect(self._surfaceIpelemClicked)
         self._ui.load_pushButton.clicked.connect(self._loadClicked)
-        self._ui.surfaceIpmap_pushButton.clicked.connect(self._surfaceIpmapClicked)
+        self._ui.pcaIpnode_pushButton.clicked.connect(self._pcaIpnodeClicked)
         self._ui.pcaSurface_pushButton.clicked.connect(self._pcaSurfaceClicked)
         self._ui.outputExnode_pushButton.clicked.connect(self._outputExnodeClicked)
         self._ui.outputExelem_pushButton.clicked.connect(self._outputExelemClicked)
@@ -129,17 +129,17 @@ class View(QtWidgets.QWidget):
             spherenode = self._ui.showNode_checkBox.isChecked()
             self._showCallback(datacloud, mesh, spherenode)
             
-    def _surfaceIpmapClicked(self):
-        filename, _ = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipmap file', dir=self._path, filter='*.ipmap')
+    def _pcaIpnodeClicked(self):
+        filename, _ = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open surface ipmap file', dir=self._path, filter='*.ipnode')
         if filename:
-            self._ui.surfaceIpmap_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
+            self._ui.pcaIpnode_lineEdit.setText(os.path.relpath(filename, os.getcwd()))
             self._pcaFilenames[3] = str(filename)
             self._path = os.path.dirname(filename)
             
     def _pcaSurfaceClicked(self):
         if self._pcaCallback:
             QtWidgets.QApplication.setOverrideCursor(QtCore.Qt.WaitCursor)
-            self._loadCallback(self._inputFilenames[0], self._pcaFilenames[3])
+            self._pcaCallback(self._inputFilenames[0], self._pcaFilenames[3])
             self._graphicsUpdate()
             QtWidgets.QApplication.restoreOverrideCursor()
     

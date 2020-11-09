@@ -135,9 +135,9 @@ def fit(ipdata, ipnode, ipelem, ipmap, iterations):
 
     mapname = 'example/LUL_map'
 
-    elem = os.path.splitext(ipelem, ipmap)[0]
+    elem = os.path.splitext(ipelem)[0]
     data = os.path.splitext(ipdata)[0]
-    define_node_geometry_2d(ipnode, ipmap)
+    define_node_geometry_2d(ipnode)
     define_elem_geometry_2d(elem, 'unit')
     define_data_geometry(data)
 
